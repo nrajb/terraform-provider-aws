@@ -45,6 +45,7 @@ import (
 	"github.com/hashicorp/terraform-provider-aws/internal/service/cloudwatch"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/codeartifact"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/codebuild"
+	"github.com/hashicorp/terraform-provider-aws/internal/service/codecatalyst"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/codecommit"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/codegurureviewer"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/codepipeline"
@@ -252,6 +253,7 @@ func servicePackages(context.Context) []conns.ServicePackage {
 		cloudwatch.ServicePackage,
 		codeartifact.ServicePackage,
 		codebuild.ServicePackage,
+		codecatalyst.ServicePackage,
 		codecommit.ServicePackage,
 		codegurureviewer.ServicePackage,
 		codepipeline.ServicePackage,

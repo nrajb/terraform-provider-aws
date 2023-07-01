@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/cleanrooms"
 	"github.com/aws/aws-sdk-go-v2/service/cloudcontrol"
 	cloudwatchlogs_sdkv2 "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
+	"github.com/aws/aws-sdk-go-v2/service/codecatalyst"
 	"github.com/aws/aws-sdk-go-v2/service/comprehend"
 	"github.com/aws/aws-sdk-go-v2/service/computeoptimizer"
 	directoryservice_sdkv2 "github.com/aws/aws-sdk-go-v2/service/directoryservice"
@@ -408,6 +409,7 @@ type AWSClient struct {
 	cloudwatchConn                   *cloudwatch.CloudWatch
 	codeartifactConn                 *codeartifact.CodeArtifact
 	codebuildConn                    *codebuild.CodeBuild
+	codecatalystClient               *codecatalyst.Client
 	codecommitConn                   *codecommit.CodeCommit
 	codeguruprofilerConn             *codeguruprofiler.CodeGuruProfiler
 	codegurureviewerConn             *codegurureviewer.CodeGuruReviewer
@@ -888,6 +890,10 @@ func (client *AWSClient) CodeArtifactConn() *codeartifact.CodeArtifact {
 
 func (client *AWSClient) CodeBuildConn() *codebuild.CodeBuild {
 	return client.codebuildConn
+}
+
+func (client *AWSClient) CodeCatalystClient() *codecatalyst.Client {
+	return client.codecatalystClient
 }
 
 func (client *AWSClient) CodeCommitConn() *codecommit.CodeCommit {

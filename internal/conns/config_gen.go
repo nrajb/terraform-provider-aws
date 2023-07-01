@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/cleanrooms"
 	"github.com/aws/aws-sdk-go-v2/service/cloudcontrol"
 	cloudwatchlogs_sdkv2 "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
+	"github.com/aws/aws-sdk-go-v2/service/codecatalyst"
 	"github.com/aws/aws-sdk-go-v2/service/comprehend"
 	"github.com/aws/aws-sdk-go-v2/service/computeoptimizer"
 	directoryservice_sdkv2 "github.com/aws/aws-sdk-go-v2/service/directoryservice"
@@ -632,6 +633,11 @@ func (c *Config) sdkv2Conns(client *AWSClient, cfg aws_sdkv2.Config) {
 	client.cloudcontrolClient = cloudcontrol.NewFromConfig(cfg, func(o *cloudcontrol.Options) {
 		if endpoint := c.Endpoints[names.CloudControl]; endpoint != "" {
 			o.EndpointResolver = cloudcontrol.EndpointResolverFromURL(endpoint)
+		}
+	})
+	client.codecatalystClient = codecatalyst.NewFromConfig(cfg, func(o *codecatalyst.Options) {
+		if endpoint := c.Endpoints[names.CodeCatalyst]; endpoint != "" {
+			o.EndpointResolver = codecatalyst.EndpointResolverFromURL(endpoint)
 		}
 	})
 	client.comprehendClient = comprehend.NewFromConfig(cfg, func(o *comprehend.Options) {
